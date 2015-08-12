@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
                       format: { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false }
     validates :password, presence: true #add20150812
+    validates :age, inclusion: { in: 1..120 } , numericality: { only_integer: true }
     has_secure_password
 end
