@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get    'login'  => 'sessions#new'
   post   'login'  => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  #get    'edit'   => 'users#edit'   #add for user profile codereview
+  #post   'edit'   => 'users#update' #add for user profile codereview
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

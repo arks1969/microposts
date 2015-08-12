@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :user_find, only: [:edit, :update]
   
   def show # gravatar画像表示の為追加
     @user = User.find(params[:id])
@@ -19,12 +20,26 @@ class UsersController < ApplicationController
   end
   
   def edit
-    
+#    @user = User.find(params[:id])
+  end
+  
+  def update
+#    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = "You profile is updated."
+      redirect_to current_user
+    else
+      render 'edit'
+    end
   end
   
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :age, :password, :password_confirmation)
+  end
+  
+  def user_find
+    @user = User.find(params[:id])
   end
 end
