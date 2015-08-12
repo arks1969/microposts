@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   before_action :user_find, only: [:edit, :update]
   
-  def show # gravatar画像表示の為追加
+  def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts
   end
   
   def new
