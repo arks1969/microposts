@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   #get    'edit'   => 'users#edit'   #add for user profile codereview
   #post   'edit'   => 'users#update' #add for user profile codereview
 
-  resources :users
+  resources :users do
+    member do
+      get 'followings', 'followers'
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts
   resources :relationships, only: [:create, :destroy]
