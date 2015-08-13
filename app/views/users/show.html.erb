@@ -28,9 +28,9 @@
             <%= link_to gravatar_for(user, size: 30), user %>
             <%= user.name %><br>
             <% if user.age.present? %>
-                Age:<%= user.age %>
+                Age:<%= user.age %><br>
             <% else %>
-                Age:<span class="text-muted"><i>Not set</i></span>
+                Age:<span class="text-muted"><i>Not set</i><br></span>
             <% end %>
           <% end %>
         <% else %>
@@ -42,9 +42,9 @@
             <%= link_to gravatar_for(user, size: 30), user %>
             <%= user.name %><br>
             <% if user.age.present? %>
-                Age:<%= user.age %>
+                Age:<%= user.age %><br>
             <% else %>
-                Age:<span class="text-muted"><i>Not set</i></span>
+                Age:<span class="text-muted"><i>Not set</i><br></span>
             <% end %>
           <% end %>
         <% else %>
