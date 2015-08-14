@@ -5,9 +5,9 @@
                 <%= gravatar_for @user %>
                 <%= @user.name %><br>
                 <% if @user.age.present? %>
-                    Age:<%= @user.age %>
+                    Age:<%= @user.age %><br>
                 <% else %>
-                    Age:<span class="text-muted"><i>Not set</i></span>
+                    Age:<span class="text-muted"><i>Not set</i></span><br>
                 <% end %>
             </h1>
         </section>
@@ -32,10 +32,12 @@
             <% else %>
                 Age:<span class="text-muted"><i>Not set</i></span><br>
             <% end %>
+            <br>
           <% end %>
         <% else %>
             No followings.<br>
         <% end %>
+        <br>
         <hr>
         <h4><%= link_to "Followers", followers_user_path %></h4><br> 
         <% if @userd.any? %>
@@ -45,11 +47,13 @@
             <% if user.age.present? %>
                 Age:<%= user.age %><br>
             <% else %>
-                Age:<span class="text-muted"><i>Not set</i><br></span>
+                Age:<span class="text-muted"><i>Not set</i></span><br>
             <% end %>
+            <br>
           <% end %>
         <% else %>
             No followers.<br>
         <% end %>
+        <br>
     </div>
 </div>
