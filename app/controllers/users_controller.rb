@@ -38,15 +38,6 @@ class UsersController < ApplicationController
     end
   end
   
-  private
-  
-  def user_params
-    params.require(:user).permit(:name, :email, :age, :password, :password_confirmation)
-  end
-  
-  def user_find
-    @user = User.find(params[:id])
-  end
   
   def followings
     @title = "Followings"
@@ -58,7 +49,18 @@ class UsersController < ApplicationController
   def followers
     @title = "Followers"
     @user = User.find(params[:id])
-    @users = @user.followed_users
+    @users = @user.follower_users
     render 'show_follow'
   end
+  private
+  
+  def user_params
+    params.require(:user).permit(:name, :email, :age, :password, :password_confirmation)
+  end
+  
+  def user_find
+    @user = User.find(params[:id])
+  end
+  
+
 end

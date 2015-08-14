@@ -22,7 +22,7 @@
         <% end %>
     </div>
     <div class="col-md-3">
-        <h4>Followings</h4><br>
+        <h4><%= link_to "Followings", followings_user_path %></h4><br>
         <% if @users.any? %>
           <% @users.each do |user| %>
             <%= link_to gravatar_for(user, size: 30), user %>
@@ -30,13 +30,14 @@
             <% if user.age.present? %>
                 Age:<%= user.age %><br>
             <% else %>
-                Age:<span class="text-muted"><i>Not set</i><br></span>
+                Age:<span class="text-muted"><i>Not set</i></span><br>
             <% end %>
           <% end %>
         <% else %>
             No followings.<br>
         <% end %>
-        <h4>Followers</h4><br>
+        <hr>
+        <h4><%= link_to "Followers", followers_user_path %></h4><br> 
         <% if @userd.any? %>
           <% @userd.each do |user| %>
             <%= link_to gravatar_for(user, size: 30), user %>
