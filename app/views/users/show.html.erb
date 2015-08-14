@@ -1,18 +1,18 @@
 <div class="row">
-    <aside class="col-md-4">
+    <aside class="col-md-3">
         <section class="user_info">
             <h1>
                 <%= gravatar_for @user %>
                 <%= @user.name %><br>
                 <% if @user.age.present? %>
-                    Age:<%= @user.age %>
+                    Age:<%= @user.age %><br>
                 <% else %>
-                    Age:<span class="text-muted"><i>Not set</i></span>
+                    Age:<span class="text-muted"><i>Not set</i></span><br>
                 <% end %>
             </h1>
         </section>
     </aside>
-    <div class="col-md-8">
+    <div class="col-md-6">
         <%= render 'follow_form' if logged_in? %>
         <% if @user.microposts.any? %>
             <h3>Microposts (<%= @user.microposts.count %>)</h3>
@@ -20,5 +20,40 @@
                 <%= render @microposts %>
             </ol>
         <% end %>
+    </div>
+    <div class="col-md-3">
+        <h4><%= link_to "Followings", followings_user_path %></h4><br>
+        <% if @users.any? %>
+          <% @users.each do |user| %>
+            <%= link_to gravatar_for(user, size: 30), user %>
+            <%= user.name %><br>
+            <% if user.age.present? %>
+                Age:<%= user.age %><br>
+            <% else %>
+                Age:<span class="text-muted"><i>Not set</i></span><br>
+            <% end %>
+            <br>
+          <% end %>
+        <% else %>
+            No followings.<br>
+        <% end %>
+        <br>
+        <hr>
+        <h4><%= link_to "Followers", followers_user_path %></h4><br> 
+        <% if @userd.any? %>
+          <% @userd.each do |user| %>
+            <%= link_to gravatar_for(user, size: 30), user %>
+            <%= user.name %><br>
+            <% if user.age.present? %>
+                Age:<%= user.age %><br>
+            <% else %>
+                Age:<span class="text-muted"><i>Not set</i></span><br>
+            <% end %>
+            <br>
+          <% end %>
+        <% else %>
+            No followers.<br>
+        <% end %>
+        <br>
     </div>
 </div>

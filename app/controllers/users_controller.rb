@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts
+#    @followings = @user.following_relationships # add for "followings-followers"
+#    @followers = @user.follower_relationships   # add for "followings-followers"
+    @users = @user.following_users
+    @userd = @user.follower_users
   end
   
   def new
@@ -34,6 +38,20 @@ class UsersController < ApplicationController
     end
   end
   
+  
+  def followings
+    @title = "Followings"
+    @user = User.find(params[:id])
+    @users = @user.following_users
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.follower_users
+    render 'show_follow'
+  end
   private
   
   def user_params
@@ -43,4 +61,6 @@ class UsersController < ApplicationController
   def user_find
     @user = User.find(params[:id])
   end
+  
+
 end
